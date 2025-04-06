@@ -9,9 +9,17 @@ from sklearn.neural_network import MLPClassifier
 import matplotlib.pyplot as plt
 import seaborn as sns 
 import numpy as np 
+# XOR problem using MLPClassifier from sklearn
 f=np.array([[0,0],[1,1],[0,1],[1,0]]) 
 g=np.array([0,0,1,1]) 
-clf=MLPClassifier(hidden_layer_sizes=2,activation='logistic', solver='sgd') 
+
+clf=MLPClassifier(
+    hidden_layer_sizes=2,
+    activation='logistic',
+    solver='sgd',
+    random_state=42,
+    learning_rate_init=0.1,
+    max_iter=1000)
 clf.fit(f,g) 
 
 x_min, x_max = f[:, 0].min() - .5, f[:, 0].max() + .5 

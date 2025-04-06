@@ -25,12 +25,12 @@ import matplotlib.pyplot as plt
 import seaborn as sns 
 
 #NAND
-# f=np.array([[0,0],[1,1],[0,1],[1,0]]) 
-# g=np.array([0,1,1,1]).reshape(4,1) 
+f=np.array([[0,0],[1,1],[0,1],[1,0]]) 
+g=np.array([1,0,1,1]).reshape(4,1) 
 
 #XOR
-f=np.array([[0,0],[1,1],[0,1],[1,0]]) 
-g=np.array([1,1,0,0]).reshape(4,1) 
+# f=np.array([[0,0],[1,1],[0,1],[1,0]]) 
+# g=np.array([0,0,1,1]).reshape(4,1) 
 
 NN=NeuralNetwork(f,g) 
 mse=[] 
@@ -48,7 +48,8 @@ plt.legend()
 plt.show()
 
 plt.figure() 
-a=np.linspace(-0.1,0.55,100) 
+#a=np.linspace(-0.1,0.55,100) 
+a = np.linspace(-0.5, 1.5, 100)
 for i in range(4):     
     if g[i][0]==0:       
         plt.scatter(f[i][0],f[i][1],s=200,c='b')     
@@ -57,4 +58,5 @@ for i in range(4):
 plt.title('NAND') 
 w1,w2,w3=NN.weights[0],NN.weights[1],NN.weights1 
 plt.plot(a,-(w1*a+w3)/w2,'r-',markersize=15) 
+
 plt.show()
